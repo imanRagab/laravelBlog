@@ -4,7 +4,7 @@
 
 
 <br><br>
-<center><a href="/product/add"><button class="btn btn-success btn-lg">New Product</button></a></center>
+<center><a href="/posts/create"><button class="btn btn-success btn-lg">New Product</button></a></center>
 <br><br>
 
 <table class="table table-light table-bordered table-hover"> 

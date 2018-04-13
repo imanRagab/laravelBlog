@@ -30,7 +30,7 @@
                     <td>
                         <a href="/posts/{{ $post->id }}"><button class="btn btn-info">View</button></a>
                         <a href="/posts/{{ $post->id }}/edit"><button class="btn btn-primary">Edit</button></a>
-                        <a href="/" ><button class="btn btn-danger">Delete</button></a>
+                        <button class="btn btn-danger delBtn" post_id="{{ $post->id }}">Delete</button>
                     </td>                               
 
             </tr>
@@ -41,6 +41,29 @@
 </tbody>
 
 </table> <br> <br>
+
+<script>
+    $(".delBtn").click(function(event){
+
+        event.preventDefault();
+
+        var resp = confirm("Are you sure you want to delete this post?");
+        if (resp == true) {
+            $.ajax({
+            
+            url: "/posts/" + $(".delBtn").attr("post_id"),
+            type: "DELETE"         
+            
+        });
+        } else {
+            alert("You pressed Cancel!");
+        }
+
+    });
+
+
+
+</script>
 
 
 @endsection

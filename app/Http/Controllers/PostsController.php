@@ -91,7 +91,13 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Post::where('id', $id)->update($request->all());
+        $post = Post::find($id);
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->user_id = $request->user_id;
+        $post->save();
+        return redirect('posts');
     }
 
     /**

@@ -7,10 +7,10 @@
 <div class="card-group" style="width:40rem;">
     <div class="card">
 
-        <h2>Post Info</h2><hr>
+        <div class="card-header">Post Info</div>
 
         <div class="card-body">
-            <h3 class="card-title">{{$post->title}}</h3>
+            <h5 class="card-title">{{$post->title}}</h5>
             <p class="card-text">{{$post->description}}</p>
         </div>
     </div>
@@ -21,10 +21,10 @@
 <div class="card-group" style="width:40rem;">
     <div class="card">
 
-        <h2>Post Creator Info</h2><hr>
+        <div class="card-header">Post Creator Info</div>
 
         <div class="card-body">
-            <h3 class="card-title">@ {{$post->user->name}}</h3>
+            <h5 class="card-title">@ {{$post->user->name}}</h5>
             Email: <p class="card-text">{{$post->user->email}}</p>
             Created At: <p class="card-text">{{$post->user->created_at}}</p>
         </div>

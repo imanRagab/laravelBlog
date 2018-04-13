@@ -18,7 +18,7 @@ Route::get('/', function () {
 Route::get('posts', 'PostsController@index');
 Route::get('posts/create', 'PostsController@create');
 Route::post('posts', 'PostsController@store');
+Route::put('posts/{id}', 'PostsController@update');
 Route::get('posts/{id}/edit', 'PostsController@edit');
 Route::get('posts/{id}', 'PostsController@show');
-Route::put('posts/{id}', 'PostsController@update');
 

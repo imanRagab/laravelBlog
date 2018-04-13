@@ -4,7 +4,7 @@
 
 
 <br><br>
-<form method="POST" action="/posts/{{ $post->id }}">
+<form method="PUT" action="/posts/{{$post->id}}">
 {{ csrf_field() }}
         <div class="form-group">
             <label for="title">Title</label>

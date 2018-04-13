@@ -28,8 +28,8 @@
                     <td>{{ $post->user->name }}</td>
                     <td>{{ $post->created_at }}</td>
                     <td>
-                        <a href="/"><button class="btn btn-info">View</button></a>
-                        <a href="/"><button class="btn btn-primary">Edit</button></a>
+                        <a href="/posts/{{ $post->id }}"><button class="btn btn-info">View</button></a>
+                        <a href="/posts/{{ $post->id }}/edit"><button class="btn btn-primary">Edit</button></a>
                         <a href="/" ><button class="btn btn-danger">Delete</button></a>
                     </td>                               
 

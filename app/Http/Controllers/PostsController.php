@@ -73,7 +73,13 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        $users = User::all();
+
+        return view('posts.edit', [
+            'post' => $post,
+            'users' => $users
+        ]);
     }
 
     /**

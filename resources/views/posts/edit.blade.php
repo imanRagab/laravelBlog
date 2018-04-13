@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 
 @section('content')
 
@@ -12,13 +12,13 @@
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea class="form-control" id="description" name="description" value="{{ $post->description }}" required></textarea>
+            <textarea class="form-control" id="description" name="description" required>{{ $post->description }} </textarea>
         </div>
         <div class="form-group">
             <label for="creator">Post Creator</label>
-            <select id="creator" name="user_id" value="{{ $post->user->name }}">
+            <select id="creator" name="user_id">
                 @foreach ($users as $user)
-                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                    <option value="{{ $user->id }}" selected="{{ $post->user->name }}">{{ $user->name }}</option>
                 @endforeach
             </select>
             

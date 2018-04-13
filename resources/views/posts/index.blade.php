@@ -48,11 +48,12 @@
         event.preventDefault();
 
         var resp = confirm("Are you sure you want to delete this post?");
+
         if (resp == true) {
             $.ajax({
             
             url: "/posts/" + $(".delBtn").attr("post_id"),
-            type: "DELETE"         
+            type: "DELETE",         
             
         });
         } else {

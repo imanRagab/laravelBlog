@@ -7,7 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 
 
-class UserController extends Controller
+class PostsController extends Controller
 {
     /**
      * Show the profile for the given user.

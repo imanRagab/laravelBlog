@@ -60,7 +60,7 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
 
-        return view('view', [
+        return view('posts.view', [
             'post' => $post
         ]);
     }

@@ -43,17 +43,26 @@
 </table> <br> <br>
 
 <script>
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     $(".delBtn").click(function(event){
 
         event.preventDefault();
-
         var resp = confirm("Are you sure you want to delete this post?");
 
         if (resp == true) {
             $.ajax({
             
-            url: "/posts/" + $(".delBtn").attr("post_id"),
-            type: "DELETE",         
+            url: "/posts/" + $(this).attr("post_id"),
+            type: "DELETE",    
+            success: function(response) {
+                window.location.href = "posts";
+            }     
             
         });
         } else {
@@ -61,8 +70,6 @@
         }
 
     });
-
-
 
 </script>
 

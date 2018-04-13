@@ -2,7 +2,7 @@
 
 @section('content')
 
-
+<br><br>
 <form method="POST" action="/posts">
         <div class="form-group">
             <label for="title">Title</label>
@@ -10,7 +10,7 @@
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea class="form-control" id="description" name="description" required>
+            <textarea class="form-control" id="description" name="description" required></textarea>
         </div>
         <div class="form-group">
             <label for="creator">Post Creator</label>
@@ -25,4 +25,4 @@
 </form>
 
 
-@endesection
+@endsection

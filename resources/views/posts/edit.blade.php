@@ -4,8 +4,10 @@
 
 
 <br><br>
-<form method="PUT" action="/posts/{{$post->id}}">
+<form method="POST" action="/posts/{{$post->id}}">
 {{ csrf_field() }}
+{{ method_field('PATCH') }}
+
         <div class="form-group">
             <label for="title">Title</label>
             <input type="text" class="form-control" id="title" name="title" value="{{ $post->title }}" required>

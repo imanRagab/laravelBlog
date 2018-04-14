@@ -6,6 +6,8 @@ use App\Post;
 use App\User;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PostsStoreRequest;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 
 class PostsController extends Controller
@@ -44,21 +46,22 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostsStoreRequest $request)
     {
-        Post::create($request->all());
+        $post->replicate();
+        Post::create($request->all());        
         return redirect('posts');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $post
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        $post = Post::find($id);
+        // $post = Post::find($id);
 
         return view('posts.view', [
             'post' => $post
@@ -68,12 +71,12 @@ class PostsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        $post = Post::find($id);
+        // $post = Post::find($id);
         $users = User::all();
 
         return view('posts.edit', [
@@ -86,29 +89,28 @@ class PostsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostsStoreRequest $request, Post $post)
     {
-        // Post::where('id', $id)->update($request->all());
-        $post = Post::find($id);
-        $post->title = $request->title;
-        $post->description = $request->description;
-        $post->user_id = $request->user_id;
-        $post->save();
+        $post->slug = null;
+        $post->update($request->all());
+        $post->replicate();
+
         return redirect('posts');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        $post = Post::find($id);
+        dd('in ists');
+        // $post = Post::find($id);
         $post->delete();
         return "true";
     }

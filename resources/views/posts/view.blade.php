@@ -26,7 +26,7 @@
         <div class="card-body">
             <h5 class="card-title">@ {{$post->user->name}}</h5>
             Email: <p class="card-text">{{$post->user->email}}</p>
-            Created At: <p class="card-text">{{$post->user->created_at}}</p>
+            Created At: <p class="card-text">{{$post->user->created_at->format('l jS \\of F Y h:i:s A')}}</p>
         </div>
     </div>
 </div>

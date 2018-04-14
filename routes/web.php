@@ -15,11 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('posts', 'PostsController@index');
-Route::get('posts/create', 'PostsController@create');
-Route::post('posts', 'PostsController@store');
-Route::patch('posts/{id}', 'PostsController@update');
-Route::delete('posts/{id}', 'PostsController@destroy');
-Route::get('posts/{id}/edit', 'PostsController@edit');
-Route::get('posts/{id}', 'PostsController@show');
+Route::get('posts', 'PostsController@index')->middleware('auth');
+Route::get('posts/create', 'PostsController@create')->middleware('auth');
+Route::post('posts', 'PostsController@store')->middleware('auth');
+Route::patch('posts/{post}', 'PostsController@update')->middleware('auth');
+Route::delete('posts/{post}', 'PostsController@destroy');
+Route::get('posts/{post}/edit', 'PostsController@edit')->middleware('auth');
+Route::get('posts/{post}', 'PostsController@show')->middleware('auth');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

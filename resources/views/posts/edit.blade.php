@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 <br><br>
 <form method="POST" action="/posts/{{$post->id}}">
 {{ csrf_field() }}
@@ -20,18 +19,12 @@
             <label for="creator">Post Creator</label>
             <select id="creator" name="user_id">
                 @foreach ($users as $user)
-                    @if ($user->id === $post->user->id)
-                        <option value="{{ $user->id }}" selected="selected">{{ $user->name }}</option>
-                    @else
-                        <option value="{{ $user->id }}">{{ $user->name }}</option>
-                    @endif
+                        <option value="{{ $user->id }}" {{ $user->id === $post->user->id ? 'selected' : '' }}>{{ $user->name }}</option>
                 @endforeach
             </select>
             
         </div>
         <button type="submit" class="btn btn-info btn-lg">Update</button>
 </form>
-
-
 
 @endsection

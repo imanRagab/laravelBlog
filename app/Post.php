@@ -3,8 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
+
 
 class Post extends Model{
+
+    use Sluggable;
 
     const UPDATED_AT = null;
 
@@ -18,5 +22,14 @@ class Post extends Model{
     public function user(){
         
         return $this->belongsTo(User::class);
+    }
+
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
     }
 }

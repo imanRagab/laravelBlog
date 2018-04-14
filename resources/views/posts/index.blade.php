@@ -26,7 +26,7 @@
 
                     <td>{{ $post->title }}</td>
                     <td>{{ $post->user->name }}</td>
-                    <td>{{ $post->created_at }}</td>
+                    <td>{{ $post->created_at->toDateString() }}</td>
                     <td>
                         <a href="/posts/{{ $post->id }}"><button class="btn btn-info">View</button></a>
                         <a href="/posts/{{ $post->id }}/edit"><button class="btn btn-primary">Edit</button></a>
@@ -43,7 +43,11 @@
 </table> <br> <br>
 
 <script>
-
+    //$('.delBtn').on('click' , function(e){
+        //if(!cofirm("Are you sure you want to delete this post?")){
+            //event.preventDefault();
+        //}
+    //})
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

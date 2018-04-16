@@ -7,9 +7,6 @@ use App\User;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\PostsStoreRequest;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Validation\Rule;
-use Illuminate\Validation\Validator;
 
 
 class PostsController extends Controller

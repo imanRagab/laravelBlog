@@ -3,6 +3,18 @@
 @section('content')
 
 <br><br>
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+<br><br>
 <form method="POST" action="/posts/{{$post->id}}">
 {{ csrf_field() }}
 {{ method_field('PATCH') }}

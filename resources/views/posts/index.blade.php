@@ -13,6 +13,7 @@
 
     <th>Title</th>
     <th>Posted By</th>
+    <th>Slug</th>    
     <th>Created At</th>
     <th>Actions</th>
 
@@ -26,7 +27,8 @@
 
                     <td>{{ $post->title }}</td>
                     <td>{{ $post->user->name }}</td>
-                    <td>{{ $post->created_at->toDateString() }}</td>
+                    <td>{{ $post->slug }}</td>                    
+                    <td>{{ $post->created_at_date }}</td>
                     <td>
                         <a href="/posts/{{ $post->id }}"><button class="btn btn-info">View</button></a>
                         <a href="/posts/{{ $post->id }}/edit"><button class="btn btn-primary">Edit</button></a>
@@ -43,36 +45,38 @@
 </table> <br> <br>
 
 <script>
-    //$('.delBtn').on('click' , function(e){
-        //if(!cofirm("Are you sure you want to delete this post?")){
-            //event.preventDefault();
-        //}
-    //})
-    $.ajaxSetup({
+ 
+    $(".delBtn").click(function(event){
+
+        var resp = confirm("Are you sure you want to delete this post?");
+
+        if (resp == true) {
+        $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-
-    $(".delBtn").click(function(event){
-
-        event.preventDefault();
-        var resp = confirm("Are you sure you want to delete this post?");
-
-        if (resp == true) {
-            $.ajax({
+    $.ajax(
+    {
+        url: "/posts/{{$post->id}}",
+        type: 'delete', // replaced from put
+        dataType: "JSON",
+        data: {
             
-            url: "/posts/" + $(this).attr("post_id"),
-            type: "DELETE",    
-            success: function(response) {
+        },
+        success: function (response)
+        {
                 window.location.href = "posts";
-            }     
             
-        });
-        } else {
-            alert("You pressed Cancel!");
-        }
-
+            console.log(response); // see the reponse sent
+        },
+        error: function(xhr) {
+         console.log(xhr.responseText); // this line will save you tons of hours while debugging
+        // do something here because of error
+       }
+    
+    });
+}
     });
 
 </script>

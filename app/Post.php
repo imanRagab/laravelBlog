@@ -32,4 +32,14 @@ class Post extends Model{
             ]
         ];
     }
+
+    public function getCreatedAtDateAttribute($value)
+    {
+        return  \Carbon\Carbon::parse($value)->toDateString();
+    }
+
+    public function getCreatedAtTimeAttribute($value)
+    {
+        return  \Carbon\Carbon::parse($value)->format('l jS \\of F Y h:i:s A');
+    }
 }

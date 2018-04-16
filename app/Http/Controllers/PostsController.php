@@ -8,10 +8,21 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostsStoreRequest;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Validator;
 
 
 class PostsController extends Controller
 {
+
+    public function __construct()
+    {
+        // $this->middleware('auth');
+
+        // $this->middleware('auth')->only('index');
+
+        $this->middleware('auth')->except('index');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -48,8 +59,8 @@ class PostsController extends Controller
      */
     public function store(PostsStoreRequest $request)
     {
-        $post->replicate();
-        Post::create($request->all());        
+               
+        Post::create($request->except(['slug']));        
         return redirect('posts');
     }
 
@@ -76,6 +87,8 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
+
+
         // $post = Post::find($id);
         $users = User::all();
 
@@ -94,8 +107,13 @@ class PostsController extends Controller
      */
     public function update(PostsStoreRequest $request, Post $post)
     {
+
         $post->slug = null;
-        $post->update($request->all());
+
+        $new_post = $request->except(['slug']);
+        // $input = $request->only(['title', 'user_id', 'description']);
+
+        $post->update($new_post);
         $post->replicate();
 
         return redirect('posts');
@@ -107,10 +125,8 @@ class PostsController extends Controller
      * @param  int  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy(Post $post)
     {
-        dd('in ists');
-        // $post = Post::find($id);
         $post->delete();
         return "true";
     }

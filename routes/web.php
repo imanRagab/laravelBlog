@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('posts', 'PostsController@index') ;
 Route::get('posts/create', 'PostsController@create') ;
 Route::post('posts', 'PostsController@store') ;
@@ -23,7 +25,9 @@ Route::delete('posts/{post}', 'PostsController@destroy');
 Route::get('posts/{post}/edit', 'PostsController@edit') ;
 Route::get('posts/{post}', 'PostsController@show') ;
 
+///Socail login -- github -- routes
+Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');

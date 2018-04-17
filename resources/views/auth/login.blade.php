@@ -60,6 +60,14 @@
                                 </a>
                             </div>
                         </div>
+                    <hr>
+                         <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-5">
+                                <a class="btn btn-sm btn-outline-primary" href="{{ url('login/github') }}">
+                                   <i class="fa fa-github fa-3x">Login with GitHub</i> 
+                                </a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

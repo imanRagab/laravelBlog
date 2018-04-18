@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model{
 
-    use Sluggable;
+    use SoftDeletes, Sluggable;
 
     const UPDATED_AT = null;
 
@@ -42,4 +42,6 @@ class Post extends Model{
     {
         return  \Carbon\Carbon::parse($value)->format('l jS \\of F Y h:i:s A');
     }
+
+    protected $dates = ['deleted_at'];
 }

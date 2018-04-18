@@ -22,8 +22,12 @@ Route::get('posts/create', 'PostsController@create') ;
 Route::post('posts', 'PostsController@store') ;
 Route::patch('posts/{post}', 'PostsController@update') ;
 Route::delete('posts/{post}', 'PostsController@destroy');
+Route::get('posts/{id}/restore', 'PostsController@restore') ;
+Route::get('posts/trash', 'PostsController@trash') ;
 Route::get('posts/{post}/edit', 'PostsController@edit') ;
 Route::get('posts/{post}', 'PostsController@show') ;
+
+
 
 ///Socail login -- github -- routes
 Route::get('login/{provider}', 'Auth\SocialAuthController@redirectToProvider');

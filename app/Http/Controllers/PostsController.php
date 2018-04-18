@@ -127,4 +127,23 @@ class PostsController extends Controller
         $post->delete();
         return "true";
     }
+
+    public function trash(){
+
+        $posts = Post::onlyTrashed()->get();
+
+        return view('posts.trash', [
+            'posts' => $posts
+        ]);
+    }
+
+    public function restore($id){
+
+        $post = Post::withTrashed()
+                ->where('id', $id)
+                ->restore();
+                
+        return redirect('posts');
+
+    }
 }

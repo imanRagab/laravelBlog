@@ -4,7 +4,10 @@
 
 
 <br><br>
-<center><a href="/posts/create"><button class="btn btn-success btn-lg">New Product</button></a></center>
+<center>
+    <a href="/posts/create"><button class="btn btn-success btn-lg">New Product</button></a>
+    <a href="/posts/trash"><button class="btn btn-danger btn-lg">Deleted Posts</button></a>
+</center>
 <br><br>
 
 <table class="table table-light table-bordered table-hover"> 

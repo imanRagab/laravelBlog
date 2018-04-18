@@ -7,6 +7,8 @@ use App\User;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\PostsStoreRequest;
+use App\Rules\UserPosts;
+
 
 
 class PostsController extends Controller
@@ -57,6 +59,9 @@ class PostsController extends Controller
     public function store(PostsStoreRequest $request)
     {
                
+        $request->validate([
+            'user_id' => [new UserPosts],
+        ]);
         Post::create($request->except(['slug']));        
         return redirect('posts');
     }

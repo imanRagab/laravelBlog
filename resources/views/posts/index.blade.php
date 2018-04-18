@@ -52,35 +52,34 @@
         var resp = confirm("Are you sure you want to delete this post?");
 
         if (resp == true) {
-        $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+            });
+            $.ajax(
+            {
+                url: "/posts/" + $(this).attr('post_id'),
+                type: 'delete', // replaced from put
+                dataType: "JSON",
+                data: {
+                    
+                },
+                success: function (response)
+                {
+                        window.location.href = "posts";
+                    
+                    console.log(response); // see the reponse sent
+                },
+                error: function(xhr) {
+                console.log(xhr.responseText); // this line will save you tons of hours while debugging
+                // do something here because of error
+            }
+            
+            });
         }
-    });
-    $.ajax(
-    {
-        url: "/posts/{{$post->id}}",
-        type: 'delete', // replaced from put
-        dataType: "JSON",
-        data: {
-            
-        },
-        success: function (response)
-        {
-                window.location.href = "posts";
-            
-            console.log(response); // see the reponse sent
-        },
-        error: function(xhr) {
-         console.log(xhr.responseText); // this line will save you tons of hours while debugging
-        // do something here because of error
-       }
-    
-    });
-}
     });
 
 </script>
-
 
 @endsection

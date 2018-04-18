@@ -26,8 +26,8 @@ Route::get('posts/{post}/edit', 'PostsController@edit') ;
 Route::get('posts/{post}', 'PostsController@show') ;
 
 ///Socail login -- github -- routes
-Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
-Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+Route::get('login/{provider}', 'Auth\SocialAuthController@redirectToProvider');
+Route::get('login/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
 
 Auth::routes();
 

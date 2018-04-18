@@ -20,6 +20,20 @@
                     <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                     <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                 @else
+                    @if(session('user') === null)
+                        <li>
+                        <a class='btn btn-sm btn-outline-primary' href='/login/github'>
+                            <i class='fa fa-github fa-3x'>Connect with GitHub</i> 
+                        </a>
+                            
+                        </li>
+                    @else
+                        <li>
+                            <a class="nav-link" href="{{ session('user')['html_url']}}">
+                                Github: {{ session('user')->nickname}} 
+                            </a>
+                        </li>
+                    @endif
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>

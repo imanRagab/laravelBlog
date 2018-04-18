@@ -39,10 +39,11 @@
 
         @endforeach
 
-
 </tbody>
 
 </table> <br> <br>
+
+{{ $posts->links() }}
 
 <script>
  
